@@ -1,7 +1,9 @@
 const routes = require("express").Router();
-
 const controller = require("../controllers");
-routes.get("/", controller.route01);
+const contactsRoutes = require("./contacts"); // Importing contacts.js
+
+routes.use("/contacts", contactsRoutes);
+routes.get("/", controller.route01); //index
 routes.get("/2", controller.route02);
 
 module.exports = routes;
