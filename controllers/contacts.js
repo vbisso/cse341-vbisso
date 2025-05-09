@@ -1,4 +1,6 @@
 const { getDb } = require("../db/connection");
+const { ObjectId } = require("mongodb");
+
 const allContacts = async (req, res) => {
   const db = getDb();
   const contacts = await db.collection("contacts").find().toArray();
@@ -19,5 +21,53 @@ const oneContact = async (req, res) => {
   }
   res.json(contact);
 };
+const newContact = async (req, res) => {
+  const db = getDb();
+  const { firstName, lastName, email, favoriteColor, birthday } = req.body;
+  if (!firstName || !lastName || !email || !favoriteColor || !birthday) {
+    return res.status(400).json({ message: "All fields are required." });
+  }
+  const result = await db.collection("contacts").insertOne({
+    firstName,
+    lastName,
+    email,
+    favoriteColor,
+    birthday,
+  });
+  const contact = await db.collection("contacts").findOne({
+    _id: result.insertedId,
+  });
+  // res.json(contact);
+  res.sendStatus(201);
+};
 
-module.exports = { allContacts, oneContact };
+const updateContact = async (req, res) => {
+  const db = getDb();
+  const id = req.params.id;
+  const updated = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday,
+  };
+
+  await db
+    .collection("contacts")
+    .updateOne({ _id: new ObjectId(id) }, { $set: updated });
+  return res.sendStatus(204);
+};
+
+const deleteContact = async (req, res) => {
+  const db = getDb();
+  const id = req.params.id;
+  await db.collection("contacts").deleteOne({ _id: new ObjectId(id) });
+  return res.sendStatus(200);
+};
+module.exports = {
+  allContacts,
+  oneContact,
+  newContact,
+  updateContact,
+  deleteContact,
+};

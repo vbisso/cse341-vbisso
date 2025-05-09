@@ -2,8 +2,25 @@ GET http://localhost:3000 HTTP/1.1
 ###
 GET http://localhost:3000/contacts HTTP/1.1
 ###
-GET http://localhost:3000/contacts/Naruto HTTP/1.1
+GET http://localhost:3000/contacts/Sasuke HTTP/1.1
 ###
 GET https://cse341-vbisso.onrender.com/contacts HTTP/1.1
 ###
 GET https://cse341-vbisso.onrender.com/contacts/Naruto HTTP/1.1
+###
+POST http://localhost:3000/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Valeria",
+  "lastName": "Bisso",
+  "email": "valeria@example.com",
+  "favoriteColor": "Blue",
+  "birthday": "1999-03-10"
+}
+###
+# PUT http://localhost:3000/contacts/
+# Content-Type: application/json
+
+# ###
+# DELETE http://localhost:3000/contacts/681c2bb3a6f9c4d8015a5006
