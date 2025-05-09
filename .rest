@@ -19,6 +19,17 @@ Content-Type: application/json
   "birthday": "1999-03-10"
 }
 ###
+POST https://cse341-vbisso.onrender.com/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Sushi",
+  "lastName": "Bisso",
+  "email": "sushithecat@example.com",
+  "favoriteColor": "black",
+  "birthday": "1999-03-10"
+}
+###
 PUT http://localhost:3000/contacts/681d6f0ba1ac25fabc2153d2
 Content-Type: application/json
 
@@ -29,6 +40,19 @@ Content-Type: application/json
   "favoriteColor": "Purple",
   "birthday": "1999-02-22"
 }
+###
+PUT https://cse341-vbisso.onrender.com/contacts/681d7024a4de0ec469a4a32f
+Content-Type: application/json
 
+{
+  "firstName": "Sushi Gaara",
+  "lastName": "Bisso Alvarino",
+  "email": "sushithecat@example.com",
+  "favoriteColor": "black and white",
+  "birthday": "1999-03-10"
+}
 ###
 DELETE http://localhost:3000/contacts/681d6f0ba1ac25fabc2153d2
+
+###
+DELETE https://cse341-vbisso.onrender.com/contacts/681d7024a4de0ec469a4a32f
