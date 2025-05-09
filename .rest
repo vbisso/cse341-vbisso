@@ -19,8 +19,16 @@ Content-Type: application/json
   "birthday": "1999-03-10"
 }
 ###
-# PUT http://localhost:3000/contacts/
-# Content-Type: application/json
+PUT http://localhost:3000/contacts/681d6f0ba1ac25fabc2153d2
+Content-Type: application/json
 
-# ###
-# DELETE http://localhost:3000/contacts/681c2bb3a6f9c4d8015a5006
+{
+  "firstName": "Valeria Victoria",
+  "lastName": "Bisso Silva",
+  "email": "valeriabisso@example.com",
+  "favoriteColor": "Purple",
+  "birthday": "1999-02-22"
+}
+
+###
+DELETE http://localhost:3000/contacts/681d6f0ba1ac25fabc2153d2
