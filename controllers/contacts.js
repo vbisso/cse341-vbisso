@@ -34,11 +34,10 @@ const newContact = async (req, res) => {
     favoriteColor,
     birthday,
   });
-  const contact = await db.collection("contacts").findOne({
-    _id: result.insertedId,
+  res.status(201).json({
+    message: "Contact created successfully",
+    id: result.insertedId,
   });
-  // res.json(contact);
-  res.sendStatus(201);
 };
 
 const updateContact = async (req, res) => {
@@ -55,14 +54,14 @@ const updateContact = async (req, res) => {
   await db
     .collection("contacts")
     .updateOne({ _id: new ObjectId(id) }, { $set: updated });
-  return res.sendStatus(204);
+  return res.sendStatus(204).json({ message: "Contact updated successfully" });
 };
 
 const deleteContact = async (req, res) => {
   const db = getDb();
   const id = req.params.id;
   await db.collection("contacts").deleteOne({ _id: new ObjectId(id) });
-  return res.sendStatus(200);
+  return res.sendStatus(200).json({ message: "Contact deleted successfully" });
 };
 module.exports = {
   allContacts,
