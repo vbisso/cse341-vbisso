@@ -5,11 +5,9 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "lhttps://cse341-vbisso.onrender.com/",
+  "host": "cse341-vbisso.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "http"
-  ],
+  "schemes": ["http"],
   "paths": {
     "/contacts/": {
       "get": {
